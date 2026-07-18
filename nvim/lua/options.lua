@@ -1,0 +1,14 @@
+local o = vim.opt
+o.number = true
+o.relativenumber = true
+o.termguicolors = true
+o.tabstop = 4
+o.shiftwidth = 4
+o.expandtab = true
+o.smartindent = true
+o.ignorecase = true
+o.smartcase = true
+o.splitright = true
+o.splitbelow = true
+o.updatetime = 300
+vim.g.mapleader = " "
