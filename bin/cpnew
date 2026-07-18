@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -z "$1" ]; then
+    echo "Usage: cpnew <problem-id>"
+    exit 1
+fi
+
+ID="$1"
+mkdir -p "$ID/tests"
+cd "$ID"
+
+cat > main.cpp << 'EOF'
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    return 0;
+}
+EOF
+
+cat > Main.java << 'EOF'
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    }
+}
+EOF
+
+touch input.txt
+touch tests/1.in tests/1.out
+
+cat > run.sh << 'EOF'
+#!/usr/bin/env bash
+g++ -std=c++17 -O2 -Wall -o main main.cpp && ./main < input.txt
+EOF
+
+chmod +x run.sh
+
+echo "Created $ID/"
